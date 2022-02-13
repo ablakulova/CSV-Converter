@@ -1,19 +1,15 @@
 using CsvApplication.BLL.Interfaces;
 using CsvApplication.BLL.Services;
 using CsvApplication.DAL.DbContexts;
+using CsvApplication.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using Syncfusion.Licensing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CsvApplication
 {
@@ -32,15 +28,18 @@ namespace CsvApplication
             services.AddMvc().AddNewtonsoftJson(options =>
             options.SerializerSettings.ContractResolver =
                new DefaultContractResolver());
-           
+
+           //Syncfusion licence registers
             SyncfusionLicenseProvider.RegisterLicense(Configuration["SyncfusionLicenseKey"]);
 
             services.AddControllersWithViews();
             services.AddDbContext<EmployeeDbContext>(options =>
                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //DI registers
             services.AddTransient<IParserService, ParserService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
