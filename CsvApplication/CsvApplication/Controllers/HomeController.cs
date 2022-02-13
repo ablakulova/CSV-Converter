@@ -23,13 +23,11 @@ namespace CsvApplication.Controllers
             _employeeService = employeeService;
             _parserService = parserService;
         }
-
-        public async Task<IActionResult> Update([FromBody] ICRUDModel<Employee> spec)
-        {
-            await _employeeService.UpdateEmployee(spec.value);
-            return Json(spec.value);
-        }
-
+        
+        /// <summary>
+        /// Imports csv file
+        /// </summary>
+        /// <param name="file"></param>
         [HttpPost]
         public async Task<IActionResult> ReadCsvFile(IFormFile file)
         {
@@ -45,12 +43,21 @@ namespace CsvApplication.Controllers
             return Redirect("/Home/Index");
         }
 
+        /// <summary>
+        /// Deletes specific employee
+        /// </summary>
+        /// <param name="spec"></param>
+
         public async Task<ActionResult> Delete([FromBody] ICRUDModel<Employee> spec)
         {
             await _employeeService.DeleteEmployee(spec.key.ToString());
             return Json(spec);
         }
 
+        /// <summary>
+        /// Sends from db to data grid
+        /// </summary>
+        /// <param name="dataRequest"></param>
         public async Task<IActionResult> SendGrid([FromBody] DataManagerRequest dataRequest)
         {
             IEnumerable DataSource = await _employeeService.GetAllEmployees();
@@ -74,6 +81,18 @@ namespace CsvApplication.Controllers
             }
             return dataRequest.RequiresCounts ? new JsonResult(new { result = DataSource, count = count }) : new JsonResult(DataSource);
         }
+
+        /// <summary>
+        /// Updates specific employee
+        /// </summary>
+        /// <param name="spec"></param>
+        /// <returns>employee value</returns>
+        public async Task<IActionResult> Update([FromBody] ICRUDModel<Employee> spec)
+        {
+            await _employeeService.UpdateEmployee(spec.value);
+            return Json(spec.value);
+        }
+
 
         public IActionResult Index()
         {
