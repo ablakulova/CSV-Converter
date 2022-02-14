@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsvApplication.DAL", "CsvAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsvApplication.BLL", "CsvApplication.BLL\CsvApplication.BLL.csproj", "{9F27B642-4328-43AD-BE16-4C99038B463A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F682E0C1-6565-470E-86A0-98E284869DF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvApplication.BLL.Tests", "CsvApplication.BLL.Tests\CsvApplication.BLL.Tests.csproj", "{9BC53E9B-6E06-42C0-99FE-5AE711C29A31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{9F27B642-4328-43AD-BE16-4C99038B463A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F27B642-4328-43AD-BE16-4C99038B463A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F27B642-4328-43AD-BE16-4C99038B463A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC53E9B-6E06-42C0-99FE-5AE711C29A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC53E9B-6E06-42C0-99FE-5AE711C29A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC53E9B-6E06-42C0-99FE-5AE711C29A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC53E9B-6E06-42C0-99FE-5AE711C29A31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BC53E9B-6E06-42C0-99FE-5AE711C29A31} = {F682E0C1-6565-470E-86A0-98E284869DF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {430CF56F-9F51-479C-8B0F-A1680EC9EDF3}
