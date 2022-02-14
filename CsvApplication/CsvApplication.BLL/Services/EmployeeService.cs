@@ -23,7 +23,7 @@ namespace CsvApplication.BLL.Services
 
         public async Task<Employee> GetEmployeeById(string Id)
         {
-            return await _repository.GetById(int.Parse(Id));
+            return await _repository.GetById(Id);
         }
 
         public async Task<Employee> UpdateEmployee(Employee employee)
@@ -44,7 +44,7 @@ namespace CsvApplication.BLL.Services
 
         public async Task DeleteEmployee(string id)
         {
-            await _repository.Delete(int.Parse(id));
+            await _repository.Delete(id);
             await _repository.SaveAsync();
         }
     }

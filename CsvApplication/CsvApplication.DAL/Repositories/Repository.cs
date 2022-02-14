@@ -19,7 +19,7 @@ namespace CsvApplication.DAL.Repositories
             return entity;
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(string id)
         {
             var emp = await _context.Set<T>().FindAsync(id);
             if (emp != null)
@@ -34,7 +34,7 @@ namespace CsvApplication.DAL.Repositories
             return employees;
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(string id)
         {
             var employee = await _context.Set<T>().FindAsync(id);
             return employee;
